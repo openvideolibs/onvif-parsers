@@ -67,7 +67,7 @@ jobs:
 
     runs-on: ubuntu-latest
     environment: test_release
-    if: github.ref_name == 'main' && !startsWith(github.event.pull_request.title,'chore') && !startsWith(github.event.head_commit.message,'chore')
+    if: github.ref_name != 'main'
 
     steps:
       - uses: actions/checkout@v4
@@ -92,7 +92,7 @@ jobs:
       - lint
       - commitlint
 
-    if: github.ref_name == 'main'
+    if: github.ref_name == 'main' && !startsWith(github.event.pull_request.title,'chore') && !startsWith(github.event.head_commit.message,'chore')
     runs-on: ubuntu-latest
     environment: release
     concurrency: release
