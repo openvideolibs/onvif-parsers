@@ -69,7 +69,6 @@ jobs:
 
     runs-on: ubuntu-latest
     environment: test_release
-    concurrency: test_release
     if: github.ref_name != 'main'
 
     steps:
