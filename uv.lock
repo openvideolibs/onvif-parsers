@@ -1,0 +1,7 @@
+version = 1
+requires-python = ">=3.9"
+
+[[package]]
+name = "onvif-parsers"
+version = "0.0.0"
+source = { editable = "." }

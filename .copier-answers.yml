@@ -1,0 +1,21 @@
+# Changes here will be overwritten by Copier
+_commit: c2d7118
+_src_path: gh:browniebroke/pypackage-template
+add_me_as_contributor: false
+copyright_year: '2025'
+documentation: true
+email: openvideolibs@koston.org
+full_name: Open Video Libs
+github_username: openvideolibs
+has_cli: false
+initial_commit: true
+is_django_package: false
+open_source_license: Apache Software License 2.0
+package_name: onvif_parsers
+project_name: onvif-parsers
+project_short_description: Parsers for ONVIF events
+project_slug: onvif-parsers
+run_uv_sync: true
+setup_github: true
+setup_pre_commit: true
+
