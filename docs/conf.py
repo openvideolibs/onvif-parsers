@@ -15,7 +15,7 @@ from sphinx.ext import apidoc
 project = "onvif-parsers"
 copyright = "2025, Open Video Libs"
 author = "Open Video Libs"
-release = "0.0.1"
+release = "1.0.0"
 
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
