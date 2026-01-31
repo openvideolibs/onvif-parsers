@@ -18,7 +18,7 @@ ParserCallable: typing.TypeAlias = Callable[
 class Registry:
     """A registry of parsers."""
 
-    def __init__(self):
+    def __init__(self) -> None:
         self.registry: dict[str, ParserCallable] = {}
 
     def register(self, key: str, f: ParserCallable) -> None:
@@ -28,7 +28,7 @@ class Registry:
 
         self.registry[key] = f
 
-    def get(self, key: str) -> Callable | None:
+    def get(self, key: str) -> ParserCallable | None:
         """Get a parser function by key."""
         return self.registry.get(key)
 
