@@ -26,6 +26,7 @@ classifiers = [
 ]
 
 dependencies = [
+    "zeep>=4.3.2",
 ]
 urls."Bug Tracker" = "https://github.com/openvideolibs/onvif-parsers/issues"
 urls.Changelog = "https://github.com/openvideolibs/onvif-parsers/blob/main/CHANGELOG.md"
@@ -34,6 +35,7 @@ urls.repository = "https://github.com/openvideolibs/onvif-parsers"
 
 [dependency-groups]
 dev = [
+  "onvif-zeep-async>=4.0.4",
   "pytest>=8,<9",
   "pytest-asyncio>=1.2.0",
   "pytest-cov>=6,<8",
