@@ -18,8 +18,8 @@ class EventEntity:
     device_class: str | None = None
     # Optional unit of measurement (e.g., percent)
     unit_of_measurement: str | None = None
-    # Current value of the entity. Most onvif events are boolean (true/false), but this
-    # could be an integer or timestamp or other data types supported as well.
+    # Current value of the entity. Most onvif events are boolean (True/False), but this
+    # could be an integer or other types. Timestamps are unparsed strings.
     value: Any = None
     # Optional entity category (e.g., diagnostic, configuration). The default (sensor)
     # does not need to be specified.
