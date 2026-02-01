@@ -43,7 +43,4 @@ async def get_event(
     assert msg_data is not None
     notif_msg.Message._value_1 = msg_data
 
-    parser = onvif_parsers.get(notif_msg.Topic._value_1)
-    assert parser is not None
-
-    return await parser(TEST_UID, notif_msg)
+    return await onvif_parsers.parse(notif_msg.Topic._value_1, TEST_UID, notif_msg)
