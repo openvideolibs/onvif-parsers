@@ -1,5 +1,11 @@
 # Changelog
 
+## v1.1.0 (2026-02-01)
+
+### Features
+
+- Port parsers over from ha core ([`efda53f`](https://github.com/openvideolibs/onvif-parsers/commit/efda53f9947e20d94c51d2fb179ebb88aae7b8f0))
+
 ## v1.0.0 (2026-01-31)
 
 ### Features
