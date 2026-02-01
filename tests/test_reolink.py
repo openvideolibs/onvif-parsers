@@ -35,7 +35,7 @@ async def test_reolink_package():
                     },
                     "Extension": None,
                     "UtcTime": datetime.datetime(
-                        2025, 3, 12, 9, 54, 27, tzinfo=datetime.UTC
+                        2025, 3, 12, 9, 54, 27, tzinfo=datetime.timezone.utc
                     ),
                     "PropertyOperation": "Initialized",
                     "_attr_1": {},

@@ -63,7 +63,7 @@ async def test_tapo_line_crossed():
                     },
                     "Extension": None,
                     "UtcTime": datetime.datetime(
-                        2025, 1, 3, 21, 5, 14, tzinfo=datetime.UTC
+                        2025, 1, 3, 21, 5, 14, tzinfo=datetime.timezone.utc
                     ),
                     "PropertyOperation": "Changed",
                     "_attr_1": {},
@@ -118,7 +118,7 @@ async def test_tapo_tpsmartevent_vehicle():
                         "_attr_1": None,
                     },
                     "UtcTime": datetime.datetime(
-                        2024, 11, 2, 0, 33, 11, tzinfo=datetime.UTC
+                        2024, 11, 2, 0, 33, 11, tzinfo=datetime.timezone.utc
                     ),
                     "_attr_1": {},
                 }
@@ -218,7 +218,7 @@ async def test_tapo_cellmotiondetector_vehicle():
                     },
                     "Extension": None,
                     "UtcTime": datetime.datetime(
-                        2025, 1, 5, 14, 2, 9, tzinfo=datetime.UTC
+                        2025, 1, 5, 14, 2, 9, tzinfo=datetime.timezone.utc
                     ),
                     "PropertyOperation": "Changed",
                     "_attr_1": {},
@@ -270,7 +270,7 @@ async def test_tapo_tpsmartevent_person():
                         "_attr_1": None,
                     },
                     "UtcTime": datetime.datetime(
-                        2024, 11, 3, 18, 40, 43, tzinfo=datetime.UTC
+                        2024, 11, 3, 18, 40, 43, tzinfo=datetime.timezone.utc
                     ),
                     "_attr_1": {},
                 }
@@ -370,7 +370,7 @@ async def test_tapo_tpsmartevent_pet():
                     },
                     "Extension": None,
                     "UtcTime": datetime.datetime(
-                        2025, 1, 22, 13, 24, 57, tzinfo=datetime.UTC
+                        2025, 1, 22, 13, 24, 57, tzinfo=datetime.timezone.utc
                     ),
                     "PropertyOperation": "Changed",
                     "_attr_1": {},
@@ -446,7 +446,7 @@ async def test_tapo_cellmotiondetector_person():
                     },
                     "Extension": None,
                     "UtcTime": datetime.datetime(
-                        2025, 1, 3, 20, 9, 22, tzinfo=datetime.UTC
+                        2025, 1, 3, 20, 9, 22, tzinfo=datetime.timezone.utc
                     ),
                     "PropertyOperation": "Changed",
                     "_attr_1": {},
@@ -522,7 +522,7 @@ async def test_tapo_tamper():
                     },
                     "Extension": None,
                     "UtcTime": datetime.datetime(
-                        2025, 1, 5, 21, 1, 5, tzinfo=datetime.UTC
+                        2025, 1, 5, 21, 1, 5, tzinfo=datetime.timezone.utc
                     ),
                     "PropertyOperation": "Changed",
                     "_attr_1": {},
@@ -598,7 +598,7 @@ async def test_tapo_intrusion():
                     },
                     "Extension": None,
                     "UtcTime": datetime.datetime(
-                        2025, 1, 11, 10, 40, 45, tzinfo=datetime.UTC
+                        2025, 1, 11, 10, 40, 45, tzinfo=datetime.timezone.utc
                     ),
                     "PropertyOperation": "Changed",
                     "_attr_1": {},

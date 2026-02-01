@@ -35,7 +35,7 @@ async def test_hikvision_alarm():
                     },
                     "Extension": None,
                     "UtcTime": datetime.datetime(
-                        2025, 3, 13, 22, 57, 26, tzinfo=datetime.UTC
+                        2025, 3, 13, 22, 57, 26, tzinfo=datetime.timezone.utc
                     ),
                     "PropertyOperation": "Initialized",
                     "_attr_1": {},
