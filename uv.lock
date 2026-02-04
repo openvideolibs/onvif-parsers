@@ -1067,7 +1067,7 @@ requires-dist = [{ name = "zeep", specifier = ">=4.3.2" }]
 [package.metadata.requires-dev]
 dev = [
     { name = "onvif-zeep-async", specifier = ">=4.0.4" },
-    { name = "pytest", specifier = ">=8,<9" },
+    { name = "pytest", specifier = ">=8,<10" },
     { name = "pytest-asyncio", specifier = ">=1.2.0" },
     { name = "pytest-cov", specifier = ">=6,<8" },
 ]
