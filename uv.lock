@@ -1044,6 +1044,7 @@ name = "onvif-parsers"
 version = "1.2.0"
 source = { editable = "." }
 dependencies = [
+    { name = "onvif-zeep-async" },
     { name = "zeep" },
 ]
 
@@ -1062,7 +1063,10 @@ docs = [
 ]
 
 [package.metadata]
-requires-dist = [{ name = "zeep", specifier = ">=4.3.2" }]
+requires-dist = [
+    { name = "onvif-zeep-async", specifier = ">=4.0.4" },
+    { name = "zeep", specifier = ">=4.3.2" },
+]
 
 [package.metadata.requires-dev]
 dev = [
