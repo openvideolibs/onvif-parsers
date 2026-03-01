@@ -1,5 +1,16 @@
 # Changelog
 
+## v1.2.0 (2026-03-01)
+
+### Documentation
+
+- Update readme, usage instructions, and contributors list ([`1a598d8`](https://github.com/openvideolibs/onvif-parsers/commit/1a598d8becdb1a24a49a3247dbf3feb6f462baa4))
+
+### Features
+
+- Add main module to test parsing ([`c1623d3`](https://github.com/openvideolibs/onvif-parsers/commit/c1623d3269637855e742fa4c0c46ad8cb4fb26b2))
+- Add top level module parse function ([`bb6228c`](https://github.com/openvideolibs/onvif-parsers/commit/bb6228c6112d3a7e269f0930d865d53d8e6ee458))
+
 ## v1.1.0 (2026-02-01)
 
 ### Features
