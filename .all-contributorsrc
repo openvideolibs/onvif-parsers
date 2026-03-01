@@ -1,15 +1,38 @@
 {
-  "projectName": "onvif-parsers",
-  "projectOwner": "openvideolibs",
-  "repoType": "github",
-  "repoHost": "https://github.com",
-  "files": [
-    "README.md"
-  ],
-  "imageSize": 80,
-  "commit": true,
-  "commitConvention": "angular",
-  "contributors": [],
-  "contributorsPerLine": 7,
-  "skipCi": true
+    "projectName": "onvif-parsers",
+    "projectOwner": "openvideolibs",
+    "repoType": "github",
+    "repoHost": "https://github.com",
+    "files": [
+        "README.md"
+    ],
+    "imageSize": 80,
+    "commit": true,
+    "commitConvention": "angular",
+    "contributors": [
+        {
+            "login": "bdraco",
+            "name": "bdraco",
+            "contributions": [
+                "code"
+            ],
+            "profile": "https://github.com/bdraco",
+            "avatar_url": [
+                "https://avatars.githubusercontent.com/u/663432?v=4"
+            ]
+        },
+        {
+            "login": "jterrace",
+            "name": "jterrace",
+            "contributions": [
+                "code"
+            ],
+            "profile": "https://github.com/jterrace",
+            "avatar_url": [
+                "https://avatars.githubusercontent.com/u/154510?v=4"
+            ]
+        }
+    ],
+    "contributorsPerLine": 7,
+    "skipCi": true
 }
