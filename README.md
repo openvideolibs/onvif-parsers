@@ -38,7 +38,7 @@
 
 ---
 
-Parsers for ONVIF events
+This package contains parsers for the [ONVIF events protocol](https://www.onvif.org/events/). Camera manufacturers that implement this protocol all have slightly different ways in which they send events. This module unifies them into a single event format, primarily for use by [Home Assistant](https://www.home-assistant.io/).
 
 ## Installation
 

@@ -10,4 +10,12 @@ Start by importing it:
 import onvif_parsers
 ```
 
-TODO: Document usage
+The module only has a single function, [`parse`](../onvif_parsers.html#onvif_parsers.parse), which you can pass an onvif event to and receive a parsed event type.
+
+# Main Tester
+
+There is also a main command line entry point in the module that can be used to test receiving events from a camera. Run the following for usage instructions:
+
+```shell
+python -m onvif_parsers --help
+```
