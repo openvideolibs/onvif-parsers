@@ -75,6 +75,9 @@ jobs:
           fetch-depth: 0
           ref: ${{ github.sha }}
 
+      - name: Fetch all branches
+        run: git fetch --all
+
       - name: Checkout commit for release
         run: |
           git checkout -B ${{ github.ref_name }} ${{ github.sha }}
