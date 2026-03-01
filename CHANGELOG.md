@@ -1,5 +1,11 @@
 # Changelog
 
+## v1.2.1 (2026-03-01)
+
+### Bug fixes
+
+- Add onvif-zeep-async as dep for main to work ([`4873837`](https://github.com/openvideolibs/onvif-parsers/commit/48738371ff4f30de1c61bbf489a4cfd72c3c7954))
+
 ## v1.2.0 (2026-03-01)
 
 ### Documentation
