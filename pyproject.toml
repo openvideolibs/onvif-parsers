@@ -26,6 +26,7 @@ classifiers = [
 ]
 
 dependencies = [
+    "onvif-zeep-async>=4.0.4",
     "zeep>=4.3.2",
 ]
 urls."Bug Tracker" = "https://github.com/openvideolibs/onvif-parsers/issues"
