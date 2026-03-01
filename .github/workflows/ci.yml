@@ -75,9 +75,6 @@ jobs:
           fetch-depth: 0
           ref: ${{ github.sha }}
 
-      - name: Fetch all branches
-        run: git fetch --all
-
       - name: Checkout commit for release
         run: |
           git checkout -B ${{ github.ref_name }} ${{ github.sha }}
@@ -86,8 +83,8 @@ jobs:
       - name: Test release
         uses: python-semantic-release/python-semantic-release@v10
         with:
-          root_options: --noop
-          github_token: noop
+          no_operation_mode: true
+          github_token: ${{ secrets.GITHUB_TOKEN }}
 
   release:
     needs:
