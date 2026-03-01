@@ -1,0 +1,24 @@
+name: Update contributors
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  contrib-update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Update contributors
+        uses: con/tributors@v0
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v5
+        with:
+          title: "Update contributors"
+          commit-message: "chore: update contributors"
+          body: "Update contributors file with new contributors."
+          branch: "tributors/update"
+          delete-branch: true
