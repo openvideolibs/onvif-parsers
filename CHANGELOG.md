@@ -1,5 +1,11 @@
 # Changelog
 
+## v2.0.0 (2026-03-05)
+
+### Features
+
+- Allow parsers to return multiple events ([`38ecaa4`](https://github.com/openvideolibs/onvif-parsers/commit/38ecaa4cfeba1ca0a6eb5600cf187447ac2009b1))
+
 ## v1.2.2 (2026-03-01)
 
 ### Bug fixes
