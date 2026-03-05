@@ -43,7 +43,7 @@ _TAPO_EVENT_TEMPLATES: dict[str, model.EventEntity] = {
 @registry.register("tns1:RuleEngine/TPSmartEventDetector/TPSmartEvent")
 async def async_parse_tplink_detector(
     uid: str, msg: typing.Any
-) -> model.EventEntity | None:
+) -> list[model.EventEntity]:
     """Handle parsing tapo events."""
     video_source = ""
     video_analytics = ""
@@ -62,10 +62,12 @@ async def async_parse_tplink_detector(
         if event_template is None:
             continue
 
-        return dataclasses.replace(
-            event_template,
-            uid=f"{uid}_{topic}_{video_source}_{video_analytics}_{rule}",
-            value=item.Value == "true",
-        )
+        return [
+            dataclasses.replace(
+                event_template,
+                uid=f"{uid}_{topic}_{video_source}_{video_analytics}_{rule}",
+                value=item.Value == "true",
+            )
+        ]
 
-    return None
+    return []

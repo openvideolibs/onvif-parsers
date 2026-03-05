@@ -9,7 +9,7 @@ pytestmark = pytest.mark.asyncio
 
 async def test_line_detector_crossed():
     """Tests tns1:RuleEngine/LineDetector/Crossed."""
-    event = await util.get_event(
+    events = await util.get_events(
         {
             "SubscriptionReference": {
                 "Address": {"_value_1": None, "_attr_1": None},
@@ -67,7 +67,8 @@ async def test_line_detector_crossed():
         }
     )
 
-    assert event is not None
+    assert len(events) == 1
+    event = events[0]
     assert event.name == "Line Detector Crossed"
     assert event.platform == "sensor"
     assert event.value == "0"

@@ -12,7 +12,7 @@ async def test_reolink_package():
     with pytest.raises(
         errors.UnknownTopicError, match="No parser registered for topic"
     ):
-        await util.get_event(
+        await util.get_events(
             {
                 "SubscriptionReference": None,
                 "Topic": {

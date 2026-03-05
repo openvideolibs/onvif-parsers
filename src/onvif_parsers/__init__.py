@@ -13,7 +13,7 @@ __version__ = "1.2.2"
 __all__ = ["parse"]
 
 
-async def parse(topic: str, uid: str, msg: typing.Any) -> model.EventEntity | None:
+async def parse(topic: str, uid: str, msg: typing.Any) -> list[model.EventEntity]:
     """
     Parse an ONVIF event notification message.
 
@@ -23,7 +23,7 @@ async def parse(topic: str, uid: str, msg: typing.Any) -> model.EventEntity | No
         msg: The raw event data. zeep.xsd.ComplexType or zeep.xsd.AnySimpleType.
 
     Returns:
-        The parsed EventEntity or None if parsing failed.
+        The parsed EventEntity or an empty list if parsing failed.
 
     Raises:
         UnknownTopicError: If the topic is not registered in the parser registry.

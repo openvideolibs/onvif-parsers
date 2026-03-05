@@ -11,9 +11,9 @@ import onvif_parsers.model
 TEST_UID = "test-unique-id"
 
 
-async def get_event(
+async def get_events(
     notification_data: dict[typing.Any, typing.Any],
-) -> onvif_parsers.model.EventEntity | None:
+) -> list[onvif_parsers.model.EventEntity]:
     """
     Take in a zeep dict, run it through the parser, and return an Event.
 

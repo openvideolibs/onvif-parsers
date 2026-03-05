@@ -9,7 +9,7 @@ pytestmark = pytest.mark.asyncio
 
 async def test_hikvision_alarm():
     """Tests hikvision camera alarm event."""
-    event = await util.get_event(
+    events = await util.get_events(
         {
             "SubscriptionReference": None,
             "Topic": {
@@ -44,7 +44,8 @@ async def test_hikvision_alarm():
         }
     )
 
-    assert event is not None
+    assert len(events) == 1
+    event = events[0]
     assert event.name == "Motion Alarm"
     assert event.platform == "binary_sensor"
     assert event.device_class == "motion"
