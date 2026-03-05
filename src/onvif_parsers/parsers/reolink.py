@@ -6,7 +6,7 @@ from onvif_parsers import model, registry, util
 @registry.register("tns1:RuleEngine/MyRuleDetector/Package")
 async def async_parse_package_detector(
     uid: str, msg: typing.Any
-) -> model.EventEntity | None:
+) -> list[model.EventEntity]:
     """Handle parsing reolink package detection."""
     video_source = ""
     topic, payload = util.extract_message(msg)
@@ -14,11 +14,13 @@ async def async_parse_package_detector(
         if source.Name == "Source":
             video_source = util.normalize_video_source(source.Value)
 
-    return model.EventEntity(
-        f"{uid}_{topic}_{video_source}",
-        "Package Detection",
-        "binary_sensor",
-        "occupancy",
-        None,
-        payload.Data.SimpleItem[0].Value == "true",
-    )
+    return [
+        model.EventEntity(
+            f"{uid}_{topic}_{video_source}",
+            "Package Detection",
+            "binary_sensor",
+            "occupancy",
+            None,
+            payload.Data.SimpleItem[0].Value == "true",
+        )
+    ]

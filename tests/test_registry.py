@@ -6,12 +6,14 @@ from onvif_parsers import model, registry
 
 
 @registry.register("decorator_test_topic")
-async def parser1(uid: str, _: typing.Any) -> model.EventEntity | None:
-    return model.EventEntity(
-        uid=uid,
-        name="Test",
-        platform="sensor",
-    )
+async def parser1(uid: str, _: typing.Any) -> list[model.EventEntity]:
+    return [
+        model.EventEntity(
+            uid=uid,
+            name="Test",
+            platform="sensor",
+        )
+    ]
 
 
 def test_get_parser_none():
@@ -27,9 +29,9 @@ async def test_registration_works():
     parser = registry.get_parser("test_topic1")
     assert parser is not None
     assert callable(parser)
-    assert await parser("entity_1", None) == model.EventEntity(
-        uid="entity_1", name="Test", platform="sensor"
-    )
+    assert await parser("entity_1", None) == [
+        model.EventEntity(uid="entity_1", name="Test", platform="sensor")
+    ]
 
 
 @pytest.mark.asyncio
@@ -38,9 +40,9 @@ async def test_decorator_registration():
     parser = registry.get_parser("decorator_test_topic")
     assert parser is not None
     assert callable(parser)
-    assert await parser("entity_1", None) == model.EventEntity(
-        uid="entity_1", name="Test", platform="sensor"
-    )
+    assert await parser("entity_1", None) == [
+        model.EventEntity(uid="entity_1", name="Test", platform="sensor")
+    ]
 
 
 def test_double_registration():

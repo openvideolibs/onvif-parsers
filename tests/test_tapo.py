@@ -9,7 +9,7 @@ pytestmark = pytest.mark.asyncio
 
 async def test_tapo_line_crossed():
     """Tests tns1:RuleEngine/CellMotionDetector/LineCross."""
-    event = await util.get_event(
+    events = await util.get_events(
         {
             "SubscriptionReference": {
                 "Address": {
@@ -72,7 +72,8 @@ async def test_tapo_line_crossed():
         }
     )
 
-    assert event is not None
+    assert len(events) == 1
+    event = events[0]
     assert event.name == "Line Detector Crossed"
     assert event.platform == "binary_sensor"
     assert event.device_class == "motion"
@@ -85,7 +86,7 @@ async def test_tapo_line_crossed():
 
 async def test_tapo_tpsmartevent_vehicle():
     """Tests tns1:RuleEngine/TPSmartEventDetector/TPSmartEvent - vehicle."""
-    event = await util.get_event(
+    events = await util.get_events(
         {
             "Message": {
                 "_value_1": {
@@ -151,7 +152,8 @@ async def test_tapo_tpsmartevent_vehicle():
         }
     )
 
-    assert event is not None
+    assert len(events) == 1
+    event = events[0]
     assert event.name == "Vehicle Detection"
     assert event.platform == "binary_sensor"
     assert event.device_class == "motion"
@@ -164,7 +166,7 @@ async def test_tapo_tpsmartevent_vehicle():
 
 async def test_tapo_cellmotiondetector_vehicle():
     """Tests tns1:RuleEngine/CellMotionDetector/TpSmartEvent - vehicle."""
-    event = await util.get_event(
+    events = await util.get_events(
         {
             "SubscriptionReference": {
                 "Address": {
@@ -227,7 +229,8 @@ async def test_tapo_cellmotiondetector_vehicle():
         }
     )
 
-    assert event is not None
+    assert len(events) == 1
+    event = events[0]
     assert event.name == "Vehicle Detection"
     assert event.platform == "binary_sensor"
     assert event.device_class == "motion"
@@ -240,7 +243,7 @@ async def test_tapo_cellmotiondetector_vehicle():
 
 async def test_tapo_tpsmartevent_person():
     """Tests tns1:RuleEngine/TPSmartEventDetector/TPSmartEvent - person."""
-    event = await util.get_event(
+    events = await util.get_events(
         {
             "Message": {
                 "_value_1": {
@@ -303,7 +306,8 @@ async def test_tapo_tpsmartevent_person():
         }
     )
 
-    assert event is not None
+    assert len(events) == 1
+    event = events[0]
     assert event.name == "Person Detection"
     assert event.platform == "binary_sensor"
     assert event.device_class == "motion"
@@ -316,7 +320,7 @@ async def test_tapo_tpsmartevent_person():
 
 async def test_tapo_tpsmartevent_pet():
     """Tests tns1:RuleEngine/TPSmartEventDetector/TPSmartEvent - pet."""
-    event = await util.get_event(
+    events = await util.get_events(
         {
             "SubscriptionReference": {
                 "Address": {
@@ -379,7 +383,8 @@ async def test_tapo_tpsmartevent_pet():
         }
     )
 
-    assert event is not None
+    assert len(events) == 1
+    event = events[0]
     assert event.name == "Pet Detection"
     assert event.platform == "binary_sensor"
     assert event.device_class == "motion"
@@ -392,7 +397,7 @@ async def test_tapo_tpsmartevent_pet():
 
 async def test_tapo_cellmotiondetector_person():
     """Tests tns1:RuleEngine/CellMotionDetector/People - person."""
-    event = await util.get_event(
+    events = await util.get_events(
         {
             "SubscriptionReference": {
                 "Address": {
@@ -455,7 +460,8 @@ async def test_tapo_cellmotiondetector_person():
         }
     )
 
-    assert event is not None
+    assert len(events) == 1
+    event = events[0]
     assert event.name == "Person Detection"
     assert event.platform == "binary_sensor"
     assert event.device_class == "motion"
@@ -468,7 +474,7 @@ async def test_tapo_cellmotiondetector_person():
 
 async def test_tapo_tamper():
     """Tests tns1:RuleEngine/CellMotionDetector/Tamper - tamper."""
-    event = await util.get_event(
+    events = await util.get_events(
         {
             "SubscriptionReference": {
                 "Address": {
@@ -531,7 +537,8 @@ async def test_tapo_tamper():
         }
     )
 
-    assert event is not None
+    assert len(events) == 1
+    event = events[0]
     assert event.name == "Tamper Detection"
     assert event.platform == "binary_sensor"
     assert event.device_class == "tamper"
@@ -544,7 +551,7 @@ async def test_tapo_tamper():
 
 async def test_tapo_intrusion():
     """Tests tns1:RuleEngine/CellMotionDetector/Intrusion - intrusion."""
-    event = await util.get_event(
+    events = await util.get_events(
         {
             "SubscriptionReference": {
                 "Address": {
@@ -607,7 +614,8 @@ async def test_tapo_intrusion():
         }
     )
 
-    assert event is not None
+    assert len(events) == 1
+    event = events[0]
     assert event.name == "Intrusion Detection"
     assert event.platform == "binary_sensor"
     assert event.device_class == "safety"
@@ -621,7 +629,7 @@ async def test_tapo_intrusion():
 async def test_tapo_missing_attributes():
     """Tests async_parse_tplink_detector with missing fields."""
     with pytest.raises(AttributeError, match="SimpleItem"):
-        await util.get_event(
+        await util.get_events(
             {
                 "Message": {
                     "_value_1": {
@@ -642,7 +650,7 @@ async def test_tapo_missing_attributes():
 
 async def test_tapo_unknown_type():
     """Tests async_parse_tplink_detector with unknown event type."""
-    event = await util.get_event(
+    events = await util.get_events(
         {
             "Message": {
                 "_value_1": {
@@ -675,4 +683,4 @@ async def test_tapo_unknown_type():
         }
     )
 
-    assert event is None
+    assert not events

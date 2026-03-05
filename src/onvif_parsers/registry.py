@@ -11,7 +11,7 @@ from . import model
 # Returns:
 #  Awaitable[model.EventEntity]: The parsed EventEntity.
 ParserCallable: typing.TypeAlias = Callable[
-    [str, typing.Any], typing.Awaitable[model.EventEntity | None]
+    [str, typing.Any], typing.Awaitable[list[model.EventEntity]]
 ]
 
 
