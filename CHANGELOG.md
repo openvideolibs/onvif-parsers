@@ -1,5 +1,11 @@
 # Changelog
 
+## v2.2.0 (2026-03-07)
+
+### Features
+
+- Add a debug utility to serialize unknown event xml ([`0442075`](https://github.com/openvideolibs/onvif-parsers/commit/04420754a938b960a4e490c2eef53df494b2b520))
+
 ## v2.1.0 (2026-03-07)
 
 ### Features
