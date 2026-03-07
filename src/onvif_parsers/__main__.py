@@ -14,6 +14,7 @@ import onvif
 from aiohttp import web
 
 import onvif_parsers
+import onvif_parsers.errors
 
 
 def get_local_ip() -> str | None:
@@ -159,7 +160,16 @@ class OnvifEventReceiver:
             if not topic:
                 print(f"message missing topic, skipping {msg}")
                 continue
-            result = await onvif_parsers.parse(topic, "uid", msg)
+            try:
+                result = await onvif_parsers.parse(topic, "uid", msg)
+            except onvif_parsers.errors.UnknownTopicError as e:
+                print(f"unknown topic {e}: {topic}, skipping: {msg}")
+                continue
+            except (AttributeError, KeyError) as e:
+                print(
+                    f"invalid message structure for topic {topic}: {e}, skipping: {msg}"
+                )
+                continue
             if not result:
                 print(f"failed to parse message with topic {topic}: {msg}")
             else:
