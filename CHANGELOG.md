@@ -1,5 +1,15 @@
 # Changelog
 
+## v2.1.0 (2026-03-07)
+
+### Features
+
+- Add ajax camera parsing support ([`10f551c`](https://github.com/openvideolibs/onvif-parsers/commit/10f551c12944f9608aa8f1c8c9bcbde2d56668f5))
+
+### Bug fixes
+
+- Catch parsing exceptions in main ([`ece360f`](https://github.com/openvideolibs/onvif-parsers/commit/ece360fdf9c9e11e8dc08dc6f64286b5a911f897))
+
 ## v2.0.0 (2026-03-05)
 
 ### Features
