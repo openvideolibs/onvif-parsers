@@ -157,21 +157,29 @@ class OnvifEventReceiver:
         print(f"parsing {len(messages)} message")
         for msg in messages:
             topic = getattr(msg.Topic, "_value_1", None)
+
+            def debug_msg(m: typing.Any = msg) -> typing.Any:
+                """Shorthand to print the message for debugging."""
+                return onvif_parsers.util.event_to_debug_format(m)
+
+            print(f"message missing topic, skipping {debug_msg()}")
+
             if not topic:
-                print(f"message missing topic, skipping {msg}")
+                print(f"message missing topic, skipping {debug_msg()}")
                 continue
             try:
                 result = await onvif_parsers.parse(topic, "uid", msg)
             except onvif_parsers.errors.UnknownTopicError as e:
-                print(f"unknown topic {e}: {topic}, skipping: {msg}")
+                print(f"unknown topic {e}: {topic}, skipping: {debug_msg()}")
                 continue
             except (AttributeError, KeyError) as e:
                 print(
-                    f"invalid message structure for topic {topic}: {e}, skipping: {msg}"
+                    f"invalid message structure for topic {topic}: {e}, skipping: "
+                    f"{debug_msg()}"
                 )
                 continue
             if not result:
-                print(f"failed to parse message with topic {topic}: {msg}")
+                print(f"failed to parse message with topic {topic}: {debug_msg()}")
             else:
                 print(f"parsed message with topic {topic}: {result}")
 
