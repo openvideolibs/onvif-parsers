@@ -1,1 +1,10 @@
-{}
+{
+    "bdraco": {
+        "name": "bdraco",
+        "blog": "https://github.com/bdraco"
+    },
+    "jterrace": {
+        "name": "jterrace",
+        "blog": "https://github.com/jterrace"
+    }
+}
