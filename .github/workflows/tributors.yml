@@ -23,11 +23,18 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
+      # Run pre-commit to fix formatting issues introduced by con/tributors
+      # The '|| true' ensures the workflow doesn't crash if pre-commit makes a fix
+      - name: Fix formatting with pre-commit
+        run: |
+          pip install pre-commit
+          pre-commit run --all-files || true
+
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v5
         with:
           title: "Update contributors"
           commit-message: "chore: update contributors"
-          body: "Update contributors file with new contributors."
+          body: "chore: update contributors file with new contributors"
           branch: "tributors/update"
           delete-branch: true
