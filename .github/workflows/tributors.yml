@@ -35,6 +35,6 @@ jobs:
         with:
           title: "Update contributors"
           commit-message: "chore: update contributors"
-          body: "Update contributors file with new contributors."
+          body: "chore: update contributors file with new contributors"
           branch: "tributors/update"
           delete-branch: true
