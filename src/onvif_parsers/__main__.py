@@ -162,8 +162,6 @@ class OnvifEventReceiver:
                 """Shorthand to print the message for debugging."""
                 return onvif_parsers.util.event_to_debug_format(m)
 
-            print(f"message missing topic, skipping {debug_msg()}")
-
             if not topic:
                 print(f"message missing topic, skipping {debug_msg()}")
                 continue
