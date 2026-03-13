@@ -1,5 +1,11 @@
 # Changelog
 
+## v2.2.1 (2026-03-13)
+
+### Bug fixes
+
+- Remove leftover debug print ([`60deb79`](https://github.com/openvideolibs/onvif-parsers/commit/60deb79df267e00ab6f35d9b6c1e0de7dbbcdc05))
+
 ## v2.2.0 (2026-03-07)
 
 ### Features
