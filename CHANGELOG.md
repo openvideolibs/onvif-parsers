@@ -1,5 +1,11 @@
 # Changelog
 
+## v2.3.0 (2026-03-13)
+
+### Features
+
+- Add ajax line cross detection ([`b96a449`](https://github.com/openvideolibs/onvif-parsers/commit/b96a449d16b36eb8df8de0c8301dfc79d914a2f9))
+
 ## v2.2.2 (2026-03-13)
 
 ### Bug fixes
