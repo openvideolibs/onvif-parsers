@@ -270,3 +270,62 @@ async def test_ajax_human_vehicle():
     events.remove(human_event)
     events.remove(vehicle_event)
     assert all(e.value is False for e in events)
+
+
+async def test_ajax_line_crossing():
+    """Tests tns1:RuleEngine/tnsajax:LineDetector/Crossing."""
+    events = await util.get_events(
+        {
+            "SubscriptionReference": None,
+            "Topic": {
+                "_value_1": "tns1:RuleEngine/tnsajax:LineDetector/Crossing",
+                "Dialect": "http://www.onvif.org/ver10/tev/topicExpression/ConcreteSet",
+                "_attr_1": {},
+            },
+            "ProducerReference": None,
+            "Message": {
+                "_value_1": {
+                    "Source": {
+                        "SimpleItem": [
+                            {"Name": "VideoSourceToken", "Value": "9c756e1c82d0-0"},
+                            {"Name": "Rule", "Value": "9c756e1c82d0-0-dk2t3c"},
+                        ],
+                        "ElementItem": [],
+                        "Extension": None,
+                        "_attr_1": None,
+                    },
+                    "Key": None,
+                    "Data": {
+                        "SimpleItem": [],
+                        "ElementItem": [
+                            {
+                                "_value_1": '<ajax:LineCrossing xmlns:ajax="http://ajax.systems/onvif/wsdl" xmlns:SOAP-ENV="http://www.w3.org/2003/05/soap-envelope" xmlns:SOAP-ENC="http://www.w3.org/2003/05/soap-encoding" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsa5="http://www.w3.org/2005/08/addressing" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd" xmlns:tns1="http://www.onvif.org/ver10/topics" xmlns:tnsajax="http://ajax.systems/onvif/topics" xmlns:tt="http://www.onvif.org/ver10/schema" xmlns:tev="http://www.onvif.org/ver10/events/wsdl" xmlns:wsnt="http://docs.oasis-open.org/wsn/b-2">\n  <ajax:Line id="0" index="0" points="0.77 0.7 0.48 0.037"/>\n</ajax:LineCrossing>\n',  # noqa: E501
+                                "Name": "LineCrossing",
+                            }
+                        ],
+                        "Extension": None,
+                        "_attr_1": None,
+                    },
+                    "Extension": None,
+                    "UtcTime": datetime.datetime(
+                        2026, 3, 8, 16, 23, 29, 197832, tzinfo=datetime.timezone.utc
+                    ),
+                    "PropertyOperation": None,
+                    "_attr_1": {},
+                }
+            },
+        }
+    )
+
+    assert events is not None
+    assert len(events) == 1
+    event = events[0]
+
+    assert event.name == "Line Detector Crossed"
+    assert event.platform == "event"
+    assert event.device_class == "motion"
+    assert event.value is None
+    assert event.uid == (
+        f"{util.TEST_UID}_tns1:RuleEngine/tnsajax:LineDetector/"
+        "Crossing_9c756e1c82d0-0_9c756e1c82d0-0-dk2t3c"
+    )
