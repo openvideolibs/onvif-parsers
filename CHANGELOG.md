@@ -1,5 +1,11 @@
 # Changelog
 
+## v2.2.2 (2026-03-13)
+
+### Bug fixes
+
+- Parse ajax object events with spaces ([`075fbb3`](https://github.com/openvideolibs/onvif-parsers/commit/075fbb3f7de789df2cc6688f1777a6a3a42635cd))
+
 ## v2.2.1 (2026-03-13)
 
 ### Bug fixes

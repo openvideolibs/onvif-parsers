@@ -9,7 +9,7 @@ from .parsers import (
     uncategorized,  # noqa: F401
 )
 
-__version__ = "2.2.1"
+__version__ = "2.2.2"
 
 __all__ = ["parse"]
 
