@@ -101,6 +101,11 @@ async def test_ajax_object_detector_human():
     assert isinstance(events, list)
     assert len(events) == 3
 
+    assert {"Person Detection", "Vehicle Detection", "Pet Detection"} == {
+        e.name for e in events
+    }
+    assert all(e.platform == "binary_sensor" for e in events)
+    assert all(e.device_class == "motion" for e in events)
     human_event = next(e for e in events if e.name == "Person Detection")
     assert human_event.value is True
     assert human_event.uid == (
@@ -108,8 +113,8 @@ async def test_ajax_object_detector_human():
         "Object_VideoSourceToken_AjaxObjectRule_Human"
     )
 
-    vehicle_event = next(e for e in events if e.name == "Vehicle Detection")
-    assert vehicle_event.value is False
+    events.remove(human_event)
+    assert all(e.value is False for e in events)
 
 
 async def test_ajax_object_detector_cleared():
@@ -136,8 +141,11 @@ async def test_ajax_object_detector_cleared():
     )
 
     assert events is not None
-    for event in events:
-        assert event.value is False
+    assert all(
+        e.name in {"Person Detection", "Vehicle Detection", "Pet Detection"}
+        for e in events
+    )
+    assert all(e.value is False for e in events)
 
 
 async def test_ajax_missing_attributes():
@@ -160,3 +168,105 @@ async def test_ajax_missing_attributes():
                 },
             }
         )
+
+
+async def test_ajax_human_animal():
+    """Tests tns1:RuleEngine/ObjectDetection/Object - Human and Pet detection."""
+    events = await util.get_events(
+        {
+            "SubscriptionReference": None,
+            "Topic": {
+                "_value_1": "tns1:RuleEngine/ObjectDetection/Object",
+                "Dialect": "http://www.onvif.org/ver10/tev/topicExpression/ConcreteSet",
+                "_attr_1": {},
+            },
+            "ProducerReference": None,
+            "Message": {
+                "_value_1": {
+                    "Source": {
+                        "SimpleItem": [
+                            {"Name": "VideoSourceToken", "Value": "9c756e1c82d0-0"},
+                            {"Name": "Rule", "Value": "9c756e1c82d0-0-dk2t3b"},
+                        ],
+                        "ElementItem": [],
+                        "Extension": None,
+                        "_attr_1": None,
+                    },
+                    "Key": None,
+                    "Data": {
+                        "SimpleItem": [{"Name": "ClassTypes", "Value": "Human Animal"}],
+                        "ElementItem": [],
+                        "Extension": None,
+                        "_attr_1": None,
+                    },
+                    "Extension": None,
+                    "UtcTime": datetime.datetime(
+                        2026, 3, 8, 16, 19, 5, 928881, tzinfo=datetime.timezone.utc
+                    ),
+                    "PropertyOperation": "Changed",
+                    "_attr_1": {},
+                }
+            },
+        }
+    )
+    assert events is not None
+    assert len(events) == 3
+    human_event = next(e for e in events if e.name == "Person Detection")
+    animal_event = next(e for e in events if e.name == "Pet Detection")
+    assert human_event.value is True
+    assert animal_event.value is True
+    events.remove(human_event)
+    events.remove(animal_event)
+    assert all(e.value is False for e in events)
+
+
+async def test_ajax_human_vehicle():
+    """Tests tns1:RuleEngine/ObjectDetection/Object - Human and Pet detection."""
+    events = await util.get_events(
+        {
+            "SubscriptionReference": None,
+            "Topic": {
+                "_value_1": "tns1:RuleEngine/ObjectDetection/Object",
+                "Dialect": "http://www.onvif.org/ver10/tev/topicExpression/ConcreteSet",
+                "_attr_1": {},
+            },
+            "ProducerReference": None,
+            "Message": {
+                "_value_1": {
+                    "Source": {
+                        "SimpleItem": [
+                            {"Name": "VideoSourceToken", "Value": "9c756e1c82d0-0"},
+                            {"Name": "Rule", "Value": "9c756e1c82d0-0-dk2t3b"},
+                        ],
+                        "ElementItem": [],
+                        "Extension": None,
+                        "_attr_1": None,
+                    },
+                    "Key": None,
+                    "Data": {
+                        "SimpleItem": [
+                            {"Name": "ClassTypes", "Value": "Human Vehicle"}
+                        ],
+                        "ElementItem": [],
+                        "Extension": None,
+                        "_attr_1": None,
+                    },
+                    "Extension": None,
+                    "UtcTime": datetime.datetime(
+                        2026, 3, 8, 16, 23, 1, 503234, tzinfo=datetime.timezone.utc
+                    ),
+                    "PropertyOperation": "Changed",
+                    "_attr_1": {},
+                }
+            },
+        }
+    )
+    assert events is not None
+    assert len(events) == 3
+    human_event = next(e for e in events if e.name == "Person Detection")
+    vehicle_event = next(e for e in events if e.name == "Vehicle Detection")
+    assert human_event.value is True
+    assert vehicle_event.value is True
+    events.remove(human_event)
+    events.remove(vehicle_event)
+    assert all(e.value is False for e in events)
