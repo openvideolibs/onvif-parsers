@@ -101,6 +101,11 @@ async def test_ajax_object_detector_human():
     assert isinstance(events, list)
     assert len(events) == 3
 
+    assert {"Person Detection", "Vehicle Detection", "Pet Detection"} == {
+        e.name for e in events
+    }
+    assert all(e.platform == "binary_sensor" for e in events)
+    assert all(e.device_class == "motion" for e in events)
     human_event = next(e for e in events if e.name == "Person Detection")
     assert human_event.value is True
     assert human_event.uid == (
@@ -108,8 +113,8 @@ async def test_ajax_object_detector_human():
         "Object_VideoSourceToken_AjaxObjectRule_Human"
     )
 
-    vehicle_event = next(e for e in events if e.name == "Vehicle Detection")
-    assert vehicle_event.value is False
+    events.remove(human_event)
+    assert all(e.value is False for e in events)
 
 
 async def test_ajax_object_detector_cleared():
@@ -136,8 +141,11 @@ async def test_ajax_object_detector_cleared():
     )
 
     assert events is not None
-    for event in events:
-        assert event.value is False
+    assert all(
+        e.name in {"Person Detection", "Vehicle Detection", "Pet Detection"}
+        for e in events
+    )
+    assert all(e.value is False for e in events)
 
 
 async def test_ajax_missing_attributes():
