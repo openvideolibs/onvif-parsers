@@ -168,3 +168,105 @@ async def test_ajax_missing_attributes():
                 },
             }
         )
+
+
+async def test_ajax_human_animal():
+    """Tests tns1:RuleEngine/ObjectDetection/Object - Human and Pet detection."""
+    events = await util.get_events(
+        {
+            "SubscriptionReference": None,
+            "Topic": {
+                "_value_1": "tns1:RuleEngine/ObjectDetection/Object",
+                "Dialect": "http://www.onvif.org/ver10/tev/topicExpression/ConcreteSet",
+                "_attr_1": {},
+            },
+            "ProducerReference": None,
+            "Message": {
+                "_value_1": {
+                    "Source": {
+                        "SimpleItem": [
+                            {"Name": "VideoSourceToken", "Value": "9c756e1c82d0-0"},
+                            {"Name": "Rule", "Value": "9c756e1c82d0-0-dk2t3b"},
+                        ],
+                        "ElementItem": [],
+                        "Extension": None,
+                        "_attr_1": None,
+                    },
+                    "Key": None,
+                    "Data": {
+                        "SimpleItem": [{"Name": "ClassTypes", "Value": "Human Animal"}],
+                        "ElementItem": [],
+                        "Extension": None,
+                        "_attr_1": None,
+                    },
+                    "Extension": None,
+                    "UtcTime": datetime.datetime(
+                        2026, 3, 8, 16, 19, 5, 928881, tzinfo=datetime.timezone.utc
+                    ),
+                    "PropertyOperation": "Changed",
+                    "_attr_1": {},
+                }
+            },
+        }
+    )
+    assert events is not None
+    assert len(events) == 3
+    human_event = next(e for e in events if e.name == "Person Detection")
+    animal_event = next(e for e in events if e.name == "Pet Detection")
+    assert human_event.value is True
+    assert animal_event.value is True
+    events.remove(human_event)
+    events.remove(animal_event)
+    assert all(e.value is False for e in events)
+
+
+async def test_ajax_human_vehicle():
+    """Tests tns1:RuleEngine/ObjectDetection/Object - Human and Pet detection."""
+    events = await util.get_events(
+        {
+            "SubscriptionReference": None,
+            "Topic": {
+                "_value_1": "tns1:RuleEngine/ObjectDetection/Object",
+                "Dialect": "http://www.onvif.org/ver10/tev/topicExpression/ConcreteSet",
+                "_attr_1": {},
+            },
+            "ProducerReference": None,
+            "Message": {
+                "_value_1": {
+                    "Source": {
+                        "SimpleItem": [
+                            {"Name": "VideoSourceToken", "Value": "9c756e1c82d0-0"},
+                            {"Name": "Rule", "Value": "9c756e1c82d0-0-dk2t3b"},
+                        ],
+                        "ElementItem": [],
+                        "Extension": None,
+                        "_attr_1": None,
+                    },
+                    "Key": None,
+                    "Data": {
+                        "SimpleItem": [
+                            {"Name": "ClassTypes", "Value": "Human Vehicle"}
+                        ],
+                        "ElementItem": [],
+                        "Extension": None,
+                        "_attr_1": None,
+                    },
+                    "Extension": None,
+                    "UtcTime": datetime.datetime(
+                        2026, 3, 8, 16, 23, 1, 503234, tzinfo=datetime.timezone.utc
+                    ),
+                    "PropertyOperation": "Changed",
+                    "_attr_1": {},
+                }
+            },
+        }
+    )
+    assert events is not None
+    assert len(events) == 3
+    human_event = next(e for e in events if e.name == "Person Detection")
+    vehicle_event = next(e for e in events if e.name == "Vehicle Detection")
+    assert human_event.value is True
+    assert vehicle_event.value is True
+    events.remove(human_event)
+    events.remove(vehicle_event)
+    assert all(e.value is False for e in events)

@@ -62,7 +62,7 @@ async def async_parse_ajax_object_detector(
 
     for item in payload.Data.SimpleItem:
         if item.Name == "ClassTypes":
-            detected_classes = set(item.Value.split(",") if item.Value else [])
+            detected_classes = set(item.Value.split() if item.Value else [])
             if "Animal" in detected_classes:
                 # Treat animal as pet
                 detected_classes.add("Pet")
