@@ -10,7 +10,7 @@ class EventEntity:
     uid: str
     # Human-readable name for the entity
     name: str
-    # Type of platform (e.g., sensor, binary_sensor)
+    # Type of platform (e.g., sensor, binary_sensor, event)
     platform: str
     # Optional device class (e.g., motion, alarm, safety). The options vary based on the
     # platform.

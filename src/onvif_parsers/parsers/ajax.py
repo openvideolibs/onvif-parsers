@@ -16,6 +16,13 @@ _AJAX_OBJECT_TEMPLATES: dict[str, model.EventEntity] = {
     "Pet": dataclasses.replace(_AJAX_MOTION_TEMPLATE, name="Pet Detection"),
 }
 
+_AJAX_LINE_CROSS_TEMPLATE = model.EventEntity(
+    uid="",
+    name="Line Detector Crossed",
+    platform="event",
+    device_class="motion",
+)
+
 
 @registry.register("tns1:RuleEngine/tnsajax:MotionDetector/Detection")
 async def async_parse_ajax_motion_detector(
@@ -81,3 +88,26 @@ async def async_parse_ajax_object_detector(
             return events
 
     return []
+
+
+@registry.register("tns1:RuleEngine/tnsajax:LineDetector/Crossing")
+async def async_parse_ajax_line_crossing(
+    uid: str, msg: typing.Any
+) -> list[model.EventEntity]:
+    """Handle parsing AJAX line crossing events."""
+    video_source = ""
+    rule = ""
+    topic, payload = util.extract_message(msg)
+
+    for source in payload.Source.SimpleItem:
+        if source.Name == "VideoSourceToken":
+            video_source = util.normalize_video_source(source.Value)
+        if source.Name == "Rule":
+            rule = source.Value
+
+    return [
+        dataclasses.replace(
+            _AJAX_LINE_CROSS_TEMPLATE,
+            uid=f"{uid}_{topic}_{video_source}_{rule}",
+        )
+    ]
