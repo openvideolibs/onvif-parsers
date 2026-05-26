@@ -3,11 +3,11 @@
 import argparse
 import asyncio
 import datetime
-import os.path
 import pprint
 import socket
 import sys
 import typing
+from pathlib import Path
 from types import TracebackType
 
 import onvif
@@ -44,7 +44,7 @@ class OnvifEventReceiver:
             args.port,
             args.username,
             args.password,
-            wsdl_dir=f"{os.path.dirname(onvif.__file__)}/wsdl/",
+            wsdl_dir=f"{Path(onvif.__file__).parent}/wsdl/",
         )
         self.manager: onvif.NotificationManager | None = None
         self.runner: web.AppRunner | None = None
@@ -245,7 +245,6 @@ def main() -> None:
         loop.run_until_complete(OnvifEventReceiver.run(args))
     except KeyboardInterrupt:
         print("Exiting due to keyboard interrupt")
-        pass
 
 
 if __name__ == "__main__":

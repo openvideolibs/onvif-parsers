@@ -46,7 +46,7 @@ def event_to_debug_format(data: typing.Any) -> typing.Any:
         # It's an lxml Element. Convert the tree to a pretty XML string.
         try:
             return etree.tostring(data, pretty_print=True, encoding="unicode")
-        except Exception:
+        except Exception:  # noqa: BLE001 - debug helper must never raise
             return repr(data)
 
     return data

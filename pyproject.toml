@@ -52,28 +52,72 @@ docs = [
 [tool.ruff]
 line-length = 88
 lint.select = [
-  "B",   # flake8-bugbear
-  "D",   # flake8-docstrings
-  "C4",  # flake8-comprehensions
-  "S",   # flake8-bandit
-  "F",   # pyflake
-  "E",   # pycodestyle
-  "W",   # pycodestyle
-  "UP",  # pyupgrade
-  "I",   # isort
-  "RUF", # ruff specific
+  "A",     # flake8-builtins
+  "ASYNC", # flake8-async
+  "B",     # flake8-bugbear
+  "BLE",   # flake8-blind-except
+  "C4",    # flake8-comprehensions
+  "D",     # flake8-docstrings
+  "DTZ",   # flake8-datetimez
+  "E",     # pycodestyle
+  "EXE",   # flake8-executable
+  "F",     # pyflake
+  "FA",    # flake8-future-annotations
+  "FLY",   # flynt
+  "FURB",  # refurb
+  "G",     # flake8-logging-format
+  "I",     # isort
+  "ICN",   # flake8-import-conventions
+  "ISC",   # flake8-implicit-str-concat
+  "LOG",   # flake8-logging
+  "N",     # pep8-naming
+  "PERF",  # Perflint
+  "PGH",   # pygrep-hooks
+  "PIE",   # flake8-pie
+  "PL",    # pylint
+  "PT",    # flake8-pytest-style
+  "PTH",   # flake8-use-pathlib
+  "PYI",   # flake8-pyi
+  "Q",     # flake8-quotes
+  "RET",   # flake8-return
+  "RUF",   # ruff specific
+  "S",     # flake8-bandit
+  "SIM",   # flake8-simplify
+  "SLOT",  # flake8-slots
+  "T10",   # flake8-debugger
+  "T20",   # flake8-print
+  "TC",    # flake8-type-checking
+  "TID",   # flake8-tidy-imports
+  "TRY",   # tryceratops
+  "UP",    # pyupgrade
+  "W",     # pycodestyle
+  "YTT",   # flake8-2020
 ]
 lint.ignore = [
-  "D203", # 1 blank line required before class docstring
-  "D212", # Multi-line docstring summary should start at the first line
-  "D100", # Missing docstring in public module
-  "D104", # Missing docstring in public package
-  "D107", # Missing docstring in `__init__`
-  "D401", # First line of docstring should be in imperative mood
+  "D203",    # 1 blank line required before class docstring
+  "D212",    # Multi-line docstring summary should start at the first line
+  "D100",    # Missing docstring in public module
+  "D104",    # Missing docstring in public package
+  "D107",    # Missing docstring in `__init__`
+  "D401",    # First line of docstring should be in imperative mood
+  "PLR0911", # too many return statements
+  "PLR0912", # too many branches
+  "PLR0913", # too many arguments
+  "PLR0915", # too many statements
+  "PLR2004", # magic value used in comparison
+  "PLW2901", # loop variable overwritten
+  "TRY003",  # long messages outside exception class
 ]
 lint.per-file-ignores."conftest.py" = [ "D100" ]
-lint.per-file-ignores."docs/conf.py" = [ "D100" ]
-lint.per-file-ignores."setup.py" = [ "D100" ]
+lint.per-file-ignores."docs/conf.py" = [
+  "A001", # sphinx requires `copyright` variable name
+  "D100",
+]
+lint.per-file-ignores."setup.py" = [ "D100", "EXE001" ]
+lint.per-file-ignores."src/onvif_parsers/__main__.py" = [
+  "T201", # print is legitimate in CLI tool
+  "T203", # pprint is legitimate in CLI tool
+]
 lint.per-file-ignores."tests/**/*" = [
   "D100",
   "D101",
@@ -81,6 +125,8 @@ lint.per-file-ignores."tests/**/*" = [
   "D103",
   "D104",
   "S101",
+  "S105",
+  "S106",
 ]
 lint.isort.known-first-party = [ "onvif_parsers", "tests" ]
 

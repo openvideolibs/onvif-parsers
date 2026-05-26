@@ -1,5 +1,5 @@
-import os
 import typing
+from pathlib import Path
 
 import onvif
 from lxml import etree
@@ -22,9 +22,9 @@ def _inflate_xml_strings(data: typing.Any) -> typing.Any:
     """
     if isinstance(data, dict):
         return {k: _inflate_xml_strings(v) for k, v in data.items()}
-    elif isinstance(data, list):
+    if isinstance(data, list):
         return [_inflate_xml_strings(i) for i in data]
-    elif isinstance(data, str):
+    if isinstance(data, str):
         clean_str = data.strip()
         if clean_str.startswith("<") and clean_str.endswith(">"):
             try:
@@ -45,7 +45,7 @@ def deserialize_event(notification_data: dict[typing.Any, typing.Any]) -> typing
     patched_data = _inflate_xml_strings(notification_data)
 
     zeep_client = Client(
-        f"{os.path.dirname(onvif.__file__)}/wsdl/events.wsdl",
+        f"{Path(onvif.__file__).parent}/wsdl/events.wsdl",
         wsse=None,
         transport=Transport(),
     )
