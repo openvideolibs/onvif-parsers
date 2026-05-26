@@ -58,7 +58,7 @@ async def async_parse_tplink_detector(
             rule = source.Value
 
     for item in payload.Data.SimpleItem:
-        event_template = _TAPO_EVENT_TEMPLATES.get(item.Name, None)
+        event_template = _TAPO_EVENT_TEMPLATES.get(item.Name)
         if event_template is None:
             continue
 

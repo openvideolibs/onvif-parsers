@@ -49,5 +49,5 @@ def test_double_registration():
     """Registering the same topic twice raises ValueError."""
     registry.register("test_topic2")(parser1)
 
-    with pytest.raises(ValueError):
+    with pytest.raises(ValueError, match="already registered"):
         registry.register("test_topic2")(parser1)
