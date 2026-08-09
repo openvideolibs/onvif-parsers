@@ -31,6 +31,17 @@
             "avatar_url": [
                 "https://avatars.githubusercontent.com/u/154510?v=4"
             ]
+        },
+        {
+            "login": "athlon73",
+            "name": "athlon73",
+            "contributions": [
+                "code"
+            ],
+            "profile": "https://github.com/athlon73",
+            "avatar_url": [
+                "https://avatars.githubusercontent.com/u/46861493?v=4"
+            ]
         }
     ],
     "contributorsPerLine": 7,
