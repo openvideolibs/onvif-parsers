@@ -65,7 +65,7 @@ async def async_parse_tplink_detector(
         return [
             dataclasses.replace(
                 event_template,
-                uid=f"{uid}_{topic}_{video_source}_{video_analytics}_{rule}",
+                uid=f"{uid}_{topic}_{video_source}_{video_analytics}_{rule}_{item.Name}",
                 value=item.Value == "true",
             )
         ]

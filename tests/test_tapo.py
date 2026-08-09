@@ -80,7 +80,7 @@ async def test_tapo_line_crossed():
     assert event.value
     assert event.uid == (
         f"{util.TEST_UID}_tns1:RuleEngine/CellMotionDetector/"
-        "LineCross_VideoSourceToken_VideoAnalyticsToken_MyLineCrossDetectorRule"
+        "LineCross_VideoSourceToken_VideoAnalyticsToken_MyLineCrossDetectorRule_IsLineCross"
     )
 
 
@@ -160,7 +160,7 @@ async def test_tapo_tpsmartevent_vehicle():
     assert event.value
     assert event.uid == (
         f"{util.TEST_UID}_tns1:RuleEngine/TPSmartEventDetector/"
-        "TPSmartEvent_VideoSourceToken_VideoAnalyticsToken_MyTPSmartEventDetectorRule"
+        "TPSmartEvent_VideoSourceToken_VideoAnalyticsToken_MyTPSmartEventDetectorRule_IsVehicle"
     )
 
 
@@ -237,7 +237,7 @@ async def test_tapo_cellmotiondetector_vehicle():
     assert event.value
     assert event.uid == (
         f"{util.TEST_UID}_tns1:RuleEngine/CellMotionDetector/"
-        "TpSmartEvent_VideoSourceToken_VideoAnalyticsToken_MyTPSmartEventDetectorRule"
+        "TpSmartEvent_VideoSourceToken_VideoAnalyticsToken_MyTPSmartEventDetectorRule_IsVehicle"
     )
 
 
@@ -314,7 +314,7 @@ async def test_tapo_tpsmartevent_person():
     assert event.value
     assert event.uid == (
         f"{util.TEST_UID}_tns1:RuleEngine/PeopleDetector/"
-        "People_VideoSourceToken_VideoAnalyticsToken_MyPeopleDetectorRule"
+        "People_VideoSourceToken_VideoAnalyticsToken_MyPeopleDetectorRule_IsPeople"
     )
 
 
@@ -391,7 +391,7 @@ async def test_tapo_tpsmartevent_pet():
     assert event.value
     assert event.uid == (
         f"{util.TEST_UID}_tns1:RuleEngine/TPSmartEventDetector/"
-        "TPSmartEvent_VideoSourceToken_VideoAnalyticsToken_MyTPSmartEventDetectorRule"
+        "TPSmartEvent_VideoSourceToken_VideoAnalyticsToken_MyTPSmartEventDetectorRule_IsPet"
     )
 
 
@@ -468,7 +468,7 @@ async def test_tapo_cellmotiondetector_person():
     assert event.value
     assert event.uid == (
         f"{util.TEST_UID}_tns1:RuleEngine/CellMotionDetector/"
-        "People_VideoSourceToken_VideoAnalyticsToken_MyPeopleDetectorRule"
+        "People_VideoSourceToken_VideoAnalyticsToken_MyPeopleDetectorRule_IsPeople"
     )
 
 
@@ -545,7 +545,7 @@ async def test_tapo_tamper():
     assert event.value
     assert event.uid == (
         f"{util.TEST_UID}_tns1:RuleEngine/CellMotionDetector/"
-        "Tamper_VideoSourceToken_VideoAnalyticsToken_MyTamperDetectorRule"
+        "Tamper_VideoSourceToken_VideoAnalyticsToken_MyTamperDetectorRule_IsTamper"
     )
 
 
@@ -622,7 +622,7 @@ async def test_tapo_intrusion():
     assert event.value
     assert event.uid == (
         f"{util.TEST_UID}_tns1:RuleEngine/CellMotionDetector/"
-        "Intrusion_VideoSourceToken_VideoAnalyticsToken_MyIntrusionDetectorRule"
+        "Intrusion_VideoSourceToken_VideoAnalyticsToken_MyIntrusionDetectorRule_IsIntrusion"
     )
 
 
