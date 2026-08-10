@@ -84,6 +84,83 @@ async def test_tapo_line_crossed():
     )
 
 
+async def test_tapo_line_crossed_detector():
+    """Tests tns1:RuleEngine/LineCrossDetector/LineCross."""
+    events = await util.get_events(
+        {
+            "SubscriptionReference": {
+                "Address": {
+                    "_value_1": "http://CAMERA_LOCAL_IP:2020/event-0_2020",
+                    "_attr_1": None,
+                },
+                "ReferenceParameters": None,
+                "Metadata": None,
+                "_value_1": None,
+                "_attr_1": None,
+            },
+            "Topic": {
+                "_value_1": "tns1:RuleEngine/LineCrossDetector/LineCross",
+                "Dialect": "http://www.onvif.org/ver10/tev/topicExpression/ConcreteSet",
+                "_attr_1": {},
+            },
+            "ProducerReference": {
+                "Address": {
+                    "_value_1": "http://CAMERA_LOCAL_IP:5656/event",
+                    "_attr_1": None,
+                },
+                "ReferenceParameters": None,
+                "Metadata": None,
+                "_value_1": None,
+                "_attr_1": None,
+            },
+            "Message": {
+                "_value_1": {
+                    "Source": {
+                        "SimpleItem": [
+                            {
+                                "Name": "VideoSourceConfigurationToken",
+                                "Value": "vsconf",
+                            },
+                            {
+                                "Name": "VideoAnalyticsConfigurationToken",
+                                "Value": "VideoAnalyticsToken",
+                            },
+                            {"Name": "Rule", "Value": "MyLineCrossDetectorRule"},
+                        ],
+                        "ElementItem": [],
+                        "Extension": None,
+                        "_attr_1": None,
+                    },
+                    "Key": None,
+                    "Data": {
+                        "SimpleItem": [{"Name": "IsLineCross", "Value": "true"}],
+                        "ElementItem": [],
+                        "Extension": None,
+                        "_attr_1": None,
+                    },
+                    "Extension": None,
+                    "UtcTime": datetime.datetime(
+                        2025, 1, 3, 21, 5, 14, tzinfo=datetime.timezone.utc
+                    ),
+                    "PropertyOperation": "Changed",
+                    "_attr_1": {},
+                }
+            },
+        }
+    )
+
+    assert len(events) == 1
+    event = events[0]
+    assert event.name == "Line Detector Crossed"
+    assert event.platform == "binary_sensor"
+    assert event.device_class == "motion"
+    assert event.value
+    assert event.uid == (
+        f"{util.TEST_UID}_tns1:RuleEngine/LineCrossDetector/"
+        "LineCross_VideoSourceToken_VideoAnalyticsToken_MyLineCrossDetectorRule_IsLineCross"
+    )
+
+
 async def test_tapo_tpsmartevent_vehicle():
     """Tests tns1:RuleEngine/TPSmartEventDetector/TPSmartEvent - vehicle."""
     events = await util.get_events(

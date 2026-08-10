@@ -39,6 +39,7 @@ _TAPO_EVENT_TEMPLATES: dict[str, model.EventEntity] = {
 @registry.register("tns1:RuleEngine/CellMotionDetector/People")
 @registry.register("tns1:RuleEngine/CellMotionDetector/Tamper")
 @registry.register("tns1:RuleEngine/CellMotionDetector/TpSmartEvent")
+@registry.register("tns1:RuleEngine/LineCrossDetector/LineCross")
 @registry.register("tns1:RuleEngine/PeopleDetector/People")
 @registry.register("tns1:RuleEngine/TPSmartEventDetector/TPSmartEvent")
 async def async_parse_tplink_detector(
