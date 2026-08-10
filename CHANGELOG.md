@@ -1,5 +1,12 @@
 # Changelog
 
+## v2.3.1 (2026-08-10)
+
+### Bug fixes
+
+- Add linecrossdetector support for tapo cameras ([`0241c3e`](https://github.com/openvideolibs/onvif-parsers/commit/0241c3ecda82bab172f3a6c0db52b25e8e86357f))
+- Duplicate uids for tp-link tapo smart event entities ([`736ceb7`](https://github.com/openvideolibs/onvif-parsers/commit/736ceb76d35cc1d16bac24872f707826e22f4701))
+
 ## v2.3.0 (2026-03-13)
 
 ### Features
