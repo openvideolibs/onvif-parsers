@@ -60,6 +60,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/bdraco"><img src="https://avatars.githubusercontent.com/u/663432?v=4?s=80" width="80px;" alt="bdraco"/><br /><sub><b>bdraco</b></sub></a><br /><a href="https://github.com/openvideolibs/onvif-parsers/commits?author=bdraco" title="Code">💻</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/jterrace"><img src="https://avatars.githubusercontent.com/u/154510?v=4?s=80" width="80px;" alt="jterrace"/><br /><sub><b>jterrace</b></sub></a><br /><a href="https://github.com/openvideolibs/onvif-parsers/commits?author=jterrace" title="Code">💻</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/athlon73"><img src="https://avatars.githubusercontent.com/u/46861493?v=4?s=80" width="80px;" alt="athlon73"/><br /><sub><b>athlon73</b></sub></a><br /><a href="https://github.com/openvideolibs/onvif-parsers/commits?author=athlon73" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/cfelicio"><img src="https://avatars.githubusercontent.com/u/7227683?v=4?s=80" width="80px;" alt="cfelicio"/><br /><sub><b>cfelicio</b></sub></a><br /><a href="https://github.com/openvideolibs/onvif-parsers/commits?author=cfelicio" title="Code">💻</a></td>
     </tr>
   </tbody>
 </table>
