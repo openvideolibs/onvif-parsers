@@ -761,3 +761,68 @@ async def test_tapo_unknown_type():
     )
 
     assert not events
+
+
+async def test_tapo_tpsmartevent_package():
+    """Tests tns1:RuleEngine/TPSmartEventDetector/TPSmartEvent - package."""
+    events = await util.get_events(
+        {
+            "SubscriptionReference": {
+                "Address": {"_value_1": None, "_attr_1": None},
+                "ReferenceParameters": None,
+                "Metadata": None,
+                "_value_1": None,
+                "_attr_1": None,
+            },
+            "Topic": {
+                "_value_1": "tns1:RuleEngine/TPSmartEventDetector/TPSmartEvent",
+                "Dialect": "http://www.onvif.org/ver10/tev/topicExpression/ConcreteSet",
+                "_attr_1": {},
+            },
+            "ProducerReference": None,
+            "Message": {
+                "_value_1": {
+                    "Source": {
+                        "SimpleItem": [
+                            {
+                                "Name": "VideoSourceConfigurationToken",
+                                "Value": "vsconf",
+                            },
+                            {
+                                "Name": "VideoAnalyticsConfigurationToken",
+                                "Value": "VideoAnalyticsToken",
+                            },
+                            {"Name": "Rule", "Value": "MyTPSmartEventDetectorRule"},
+                        ],
+                        "ElementItem": [],
+                        "Extension": None,
+                        "_attr_1": None,
+                    },
+                    "Key": None,
+                    "Data": {
+                        "SimpleItem": [{"Name": "IsPackageDeliver", "Value": "true"}],
+                        "ElementItem": [],
+                        "Extension": None,
+                        "_attr_1": None,
+                    },
+                    "Extension": None,
+                    "UtcTime": datetime.datetime(
+                        2026, 8, 29, 22, 6, 23, tzinfo=datetime.timezone.utc
+                    ),
+                    "PropertyOperation": "Initialized",
+                    "_attr_1": {},
+                }
+            },
+        }
+    )
+
+    assert len(events) == 1
+    event = events[0]
+    assert event.name == "Package Detection"
+    assert event.platform == "binary_sensor"
+    assert event.device_class == "motion"
+    assert event.value
+    assert event.uid == (
+        f"{util.TEST_UID}_tns1:RuleEngine/TPSmartEventDetector/"
+        "TPSmartEvent_VideoSourceToken_VideoAnalyticsToken_MyTPSmartEventDetectorRule_IsPackageDeliver"
+    )
