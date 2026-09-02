@@ -10,6 +10,12 @@ _TAPO_EVENT_TEMPLATES: dict[str, model.EventEntity] = {
         platform="binary_sensor",
         device_class="motion",
     ),
+    "IsPackageDeliver": model.EventEntity(
+        uid="",
+        name="Package Detection",
+        platform="binary_sensor",
+        device_class="motion",
+    ),
     "IsPeople": model.EventEntity(
         uid="", name="Person Detection", platform="binary_sensor", device_class="motion"
     ),
