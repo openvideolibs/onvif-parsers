@@ -1,5 +1,15 @@
 # Changelog
 
+## v2.4.0 (2026-09-02)
+
+### Features
+
+- Add support for tapo doorbell package detection ([`d4c6282`](https://github.com/openvideolibs/onvif-parsers/commit/d4c6282ea9eef9afe93cd5d4005804dbdc453077))
+
+### Documentation
+
+- Fix broken emoji key link ([`6e96e23`](https://github.com/openvideolibs/onvif-parsers/commit/6e96e23363bc22f8108a9fb321914612c44cd775))
+
 ## v2.3.1 (2026-08-10)
 
 ### Bug fixes
