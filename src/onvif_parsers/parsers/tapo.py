@@ -12,7 +12,13 @@ _TAPO_EVENT_TEMPLATES: dict[str, model.EventEntity] = {
     ),
     "IsPackageDeliver": model.EventEntity(
         uid="",
-        name="Package Detection",
+        name="Package Delivery",
+        platform="binary_sensor",
+        device_class="motion",
+    ),
+    "IsPackagePickup": model.EventEntity(
+        uid="",
+        name="Package Pickup",
         platform="binary_sensor",
         device_class="motion",
     ),
