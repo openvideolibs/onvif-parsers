@@ -1,5 +1,11 @@
 # Changelog
 
+## v2.5.0 (2026-09-13)
+
+### Features
+
+- Add tapo package pickup and fix package delivery ([`efa4c48`](https://github.com/openvideolibs/onvif-parsers/commit/efa4c48728bf557c35c73268181a4a0f306e0493))
+
 ## v2.4.0 (2026-09-02)
 
 ### Features
