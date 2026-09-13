@@ -763,8 +763,8 @@ async def test_tapo_unknown_type():
     assert not events
 
 
-async def test_tapo_tpsmartevent_package():
-    """Tests tns1:RuleEngine/TPSmartEventDetector/TPSmartEvent - package."""
+async def test_tapo_tpsmartevent_package_delivery():
+    """Tests tns1:RuleEngine/TPSmartEventDetector/TPSmartEvent - package delivery."""
     events = await util.get_events(
         {
             "SubscriptionReference": {
@@ -818,11 +818,76 @@ async def test_tapo_tpsmartevent_package():
 
     assert len(events) == 1
     event = events[0]
-    assert event.name == "Package Detection"
+    assert event.name == "Package Delivery"
     assert event.platform == "binary_sensor"
     assert event.device_class == "motion"
     assert event.value
     assert event.uid == (
         f"{util.TEST_UID}_tns1:RuleEngine/TPSmartEventDetector/"
         "TPSmartEvent_VideoSourceToken_VideoAnalyticsToken_MyTPSmartEventDetectorRule_IsPackageDeliver"
+    )
+
+
+async def test_tapo_tpsmartevent_package_pickup():
+    """Tests tns1:RuleEngine/TPSmartEventDetector/TPSmartEvent - package pickup."""
+    events = await util.get_events(
+        {
+            "SubscriptionReference": {
+                "Address": {"_value_1": None, "_attr_1": None},
+                "ReferenceParameters": None,
+                "Metadata": None,
+                "_value_1": None,
+                "_attr_1": None,
+            },
+            "Topic": {
+                "_value_1": "tns1:RuleEngine/TPSmartEventDetector/TPSmartEvent",
+                "Dialect": "http://www.onvif.org/ver10/tev/topicExpression/ConcreteSet",
+                "_attr_1": {},
+            },
+            "ProducerReference": None,
+            "Message": {
+                "_value_1": {
+                    "Source": {
+                        "SimpleItem": [
+                            {
+                                "Name": "VideoSourceConfigurationToken",
+                                "Value": "vsconf",
+                            },
+                            {
+                                "Name": "VideoAnalyticsConfigurationToken",
+                                "Value": "VideoAnalyticsToken",
+                            },
+                            {"Name": "Rule", "Value": "MyTPSmartEventDetectorRule"},
+                        ],
+                        "ElementItem": [],
+                        "Extension": None,
+                        "_attr_1": None,
+                    },
+                    "Key": None,
+                    "Data": {
+                        "SimpleItem": [{"Name": "IsPackagePickup", "Value": "true"}],
+                        "ElementItem": [],
+                        "Extension": None,
+                        "_attr_1": None,
+                    },
+                    "Extension": None,
+                    "UtcTime": datetime.datetime(
+                        2026, 9, 6, 14, 4, 14, tzinfo=datetime.timezone.utc
+                    ),
+                    "PropertyOperation": "Initialized",
+                    "_attr_1": {},
+                }
+            },
+        }
+    )
+
+    assert len(events) == 1
+    event = events[0]
+    assert event.name == "Package Pickup"
+    assert event.platform == "binary_sensor"
+    assert event.device_class == "motion"
+    assert event.value
+    assert event.uid == (
+        f"{util.TEST_UID}_tns1:RuleEngine/TPSmartEventDetector/"
+        "TPSmartEvent_VideoSourceToken_VideoAnalyticsToken_MyTPSmartEventDetectorRule_IsPackagePickup"
     )
