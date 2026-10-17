@@ -1,4 +1,4 @@
-import datetime
+import datetime as dt
 
 import pytest
 
@@ -34,8 +34,8 @@ async def test_reolink_package():
                         "_attr_1": None,
                     },
                     "Extension": None,
-                    "UtcTime": datetime.datetime(
-                        2025, 3, 12, 9, 54, 27, tzinfo=datetime.timezone.utc
+                    "UtcTime": dt.datetime(
+                        2025, 3, 12, 9, 54, 27, tzinfo=dt.timezone.utc
                     ),
                     "PropertyOperation": "Initialized",
                     "_attr_1": {},

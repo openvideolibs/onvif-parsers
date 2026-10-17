@@ -2,7 +2,7 @@
 
 import argparse
 import asyncio
-import datetime
+import datetime as dt
 import pprint
 import socket
 import sys
@@ -115,20 +115,18 @@ class OnvifEventReceiver:
         )
         self.manager = await self.cam.create_notification_manager(
             receive_url,
-            datetime.timedelta(minutes=self.args.subscription_time),
+            dt.timedelta(minutes=self.args.subscription_time),
             self.subscription_lost,
         )
         await self.manager.set_synchronization_point()
 
         print(f"waiting for messages at {receive_url}...")
-        await asyncio.sleep(
-            datetime.timedelta(minutes=self.args.wait_time).total_seconds()
-        )
+        await asyncio.sleep(dt.timedelta(minutes=self.args.wait_time).total_seconds())
 
     async def pullpoint(self) -> None:
         """Runs pullpoint to receive ONVIF notifications."""
         self.manager = await self.cam.create_pullpoint_manager(
-            datetime.timedelta(minutes=self.args.subscription_time),
+            dt.timedelta(minutes=self.args.subscription_time),
             self.subscription_lost,
         )
         await self.manager.set_synchronization_point()
@@ -136,15 +134,14 @@ class OnvifEventReceiver:
 
         loop = asyncio.get_event_loop()
         end_time = (
-            loop.time()
-            + datetime.timedelta(minutes=self.args.wait_time).total_seconds()
+            loop.time() + dt.timedelta(minutes=self.args.wait_time).total_seconds()
         )
         print("waiting for messages...")
         while loop.time() < end_time:
             messages = await pullpoint.PullMessages(
                 {
                     "MessageLimit": 5,
-                    "Timeout": datetime.timedelta(seconds=30),
+                    "Timeout": dt.timedelta(seconds=30),
                 }
             )
             if not messages or not messages.NotificationMessage:

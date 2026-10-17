@@ -1,4 +1,4 @@
-import datetime
+import datetime as dt
 
 from lxml import etree
 
@@ -42,8 +42,8 @@ RAW_UNPARSEABLE_PAYLOAD = {
                 "_attr_1": None,
             },
             "Extension": None,
-            "UtcTime": datetime.datetime(
-                2026, 1, 23, 19, 58, 3, 901775, tzinfo=datetime.timezone.utc
+            "UtcTime": dt.datetime(
+                2026, 1, 23, 19, 58, 3, 901775, tzinfo=dt.timezone.utc
             ),
             "PropertyOperation": None,
             "_attr_1": {},
@@ -63,8 +63,8 @@ def test_deserialize_event_debug():
     assert isinstance(
         event.Message._value_1.Data.ElementItem[0]._value_1, etree._Element
     )
-    assert event.Message._value_1.UtcTime == datetime.datetime(
-        2026, 1, 23, 19, 58, 3, 901775, tzinfo=datetime.timezone.utc
+    assert event.Message._value_1.UtcTime == dt.datetime(
+        2026, 1, 23, 19, 58, 3, 901775, tzinfo=dt.timezone.utc
     )
 
     debug_event = onvif_parsers.util.event_to_debug_format(event)
@@ -81,6 +81,6 @@ def test_deserialize_event_debug():
     assert isinstance(
         debug_event["Message"]["_value_1"]["Data"]["ElementItem"][0]["_value_1"], str
     )
-    assert debug_event["Message"]["_value_1"]["UtcTime"] == datetime.datetime(
-        2026, 1, 23, 19, 58, 3, 901775, tzinfo=datetime.timezone.utc
+    assert debug_event["Message"]["_value_1"]["UtcTime"] == dt.datetime(
+        2026, 1, 23, 19, 58, 3, 901775, tzinfo=dt.timezone.utc
     )

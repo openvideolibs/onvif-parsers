@@ -1,4 +1,4 @@
-import datetime
+import datetime as dt
 
 import pytest
 
@@ -34,8 +34,8 @@ async def test_hikvision_alarm():
                         "_attr_1": None,
                     },
                     "Extension": None,
-                    "UtcTime": datetime.datetime(
-                        2025, 3, 13, 22, 57, 26, tzinfo=datetime.timezone.utc
+                    "UtcTime": dt.datetime(
+                        2025, 3, 13, 22, 57, 26, tzinfo=dt.timezone.utc
                     ),
                     "PropertyOperation": "Initialized",
                     "_attr_1": {},

@@ -1,4 +1,4 @@
-import datetime
+import datetime as dt
 
 import pytest
 
@@ -35,8 +35,8 @@ async def test_ajax_motion_detector():
                         "_attr_1": None,
                     },
                     "Extension": None,
-                    "UtcTime": datetime.datetime(
-                        2026, 1, 10, 20, 4, 32, tzinfo=datetime.timezone.utc
+                    "UtcTime": dt.datetime(
+                        2026, 1, 10, 20, 4, 32, tzinfo=dt.timezone.utc
                     ),
                     "PropertyOperation": "Changed",
                     "_attr_1": {},
@@ -87,8 +87,8 @@ async def test_ajax_object_detector_human():
                         "_attr_1": None,
                     },
                     "Extension": None,
-                    "UtcTime": datetime.datetime(
-                        2026, 1, 23, 18, 52, 43, tzinfo=datetime.timezone.utc
+                    "UtcTime": dt.datetime(
+                        2026, 1, 23, 18, 52, 43, tzinfo=dt.timezone.utc
                     ),
                     "PropertyOperation": "Initialized",
                     "_attr_1": {},
@@ -200,8 +200,8 @@ async def test_ajax_human_animal():
                         "_attr_1": None,
                     },
                     "Extension": None,
-                    "UtcTime": datetime.datetime(
-                        2026, 3, 8, 16, 19, 5, 928881, tzinfo=datetime.timezone.utc
+                    "UtcTime": dt.datetime(
+                        2026, 3, 8, 16, 19, 5, 928881, tzinfo=dt.timezone.utc
                     ),
                     "PropertyOperation": "Changed",
                     "_attr_1": {},
@@ -252,8 +252,8 @@ async def test_ajax_human_vehicle():
                         "_attr_1": None,
                     },
                     "Extension": None,
-                    "UtcTime": datetime.datetime(
-                        2026, 3, 8, 16, 23, 1, 503234, tzinfo=datetime.timezone.utc
+                    "UtcTime": dt.datetime(
+                        2026, 3, 8, 16, 23, 1, 503234, tzinfo=dt.timezone.utc
                     ),
                     "PropertyOperation": "Changed",
                     "_attr_1": {},
@@ -307,8 +307,8 @@ async def test_ajax_line_crossing():
                         "_attr_1": None,
                     },
                     "Extension": None,
-                    "UtcTime": datetime.datetime(
-                        2026, 3, 8, 16, 23, 29, 197832, tzinfo=datetime.timezone.utc
+                    "UtcTime": dt.datetime(
+                        2026, 3, 8, 16, 23, 29, 197832, tzinfo=dt.timezone.utc
                     ),
                     "PropertyOperation": None,
                     "_attr_1": {},
