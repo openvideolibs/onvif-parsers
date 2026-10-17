@@ -1,4 +1,4 @@
-import datetime
+import datetime as dt
 
 import pytest
 
@@ -59,8 +59,8 @@ async def test_line_detector_crossed():
                         "_attr_1": None,
                     },
                     "Extension": None,
-                    "UtcTime": datetime.datetime(
-                        2020, 5, 24, 7, 24, 47, tzinfo=datetime.timezone.utc
+                    "UtcTime": dt.datetime(
+                        2020, 5, 24, 7, 24, 47, tzinfo=dt.timezone.utc
                     ),
                     "PropertyOperation": "Initialized",
                     "_attr_1": {},
