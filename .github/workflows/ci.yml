@@ -67,7 +67,8 @@ jobs:
 
     runs-on: ubuntu-latest
     environment: test_release
-    if: github.ref_name != 'main'
+    outputs:
+      released: ${{ steps.test_release.outputs.released }}
 
     steps:
       - uses: actions/checkout@v7
@@ -79,8 +80,10 @@ jobs:
         run: |
           git checkout -B ${{ github.ref_name }} ${{ github.sha }}
 
-      # Do a dry run of PSR
+      # Do a dry run of PSR; its `released` output tells whether the
+      # commits since the last tag warrant a release
       - name: Test release
+        id: test_release
         uses: python-semantic-release/python-semantic-release@v10
         with:
           no_operation_mode: true
@@ -91,8 +94,10 @@ jobs:
       - test
       - lint
       - commitlint
+      - test_release
 
-    if: github.ref_name == 'main' && !startsWith(github.event.pull_request.title,'chore') && !startsWith(github.event.head_commit.message,'chore')
+    # Only enter the protected environment when PSR would actually release
+    if: github.ref_name == 'main' && needs.test_release.outputs.released == 'true'
     runs-on: ubuntu-latest
     environment: release
     concurrency: release
