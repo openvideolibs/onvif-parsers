@@ -15,15 +15,27 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
+
+      - uses: actions/setup-node@v7
         with:
-          fetch-depth: 0
+          node-version: 24
 
+      # Add every human GitHub contributor to .all-contributorsrc (no-op for
+      # existing entries), then regenerate the README table.
       - name: Update contributors
-        uses: con/tributors@0.1.1
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PRIVATE_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          npm install --global all-contributors-cli@7.0.0
+          gh api "repos/${{ github.repository }}/contributors" --paginate \
+            --jq '.[] | select(.type == "User") | .login' |
+            while read -r login; do
+              all-contributors add "$login" code --no-commit
+            done
+          all-contributors generate
 
-      # Run pre-commit to fix formatting issues introduced by con/tributors
+      # Run pre-commit to fix any formatting issues in the regenerated files
       # The '|| true' ensures the workflow doesn't crash if pre-commit makes a fix
       - name: Fix formatting with pre-commit
         run: |
@@ -36,5 +48,5 @@ jobs:
           title: "Update contributors"
           commit-message: "chore: update contributors"
           body: "chore: update contributors file with new contributors"
-          branch: "tributors/update"
+          branch: "all-contributors/update"
           delete-branch: true
