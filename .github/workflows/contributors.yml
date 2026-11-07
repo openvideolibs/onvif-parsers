@@ -31,7 +31,7 @@ jobs:
           gh api "repos/${{ github.repository }}/contributors" --paginate \
             --jq '.[] | select(.type == "User") | .login' |
             while read -r login; do
-              all-contributors add "$login" code --no-commit
+              all-contributors add "$login" code
             done
           all-contributors generate
 
