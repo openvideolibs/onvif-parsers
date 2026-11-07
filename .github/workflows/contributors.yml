@@ -45,7 +45,7 @@ jobs:
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v8
         with:
-          title: "Update contributors"
+          title: "chore: update contributors"
           commit-message: "chore: update contributors"
           body: "chore: update contributors file with new contributors"
           branch: "all-contributors/update"
