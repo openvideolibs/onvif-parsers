@@ -1,5 +1,11 @@
 # Changelog
 
+## v3.0.0 (2026-11-07)
+
+### Bug fixes
+
+- Correct entity types for tamper, line crossing and counter parsers ([`9bff873`](https://github.com/openvideolibs/onvif-parsers/commit/9bff873567a0760e656fbde162d37346a8eadc03))
+
 ## v2.5.0 (2026-09-13)
 
 ### Features

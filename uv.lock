@@ -1,5 +1,5 @@
 version = 1
-revision = 3
+revision = 5
 requires-python = ">=3.10"
 resolution-markers = [
     "python_full_version >= '3.11'",
@@ -1041,7 +1041,7 @@ wheels = [
 
 [[package]]
 name = "onvif-parsers"
-version = "2.5.0"
+version = "3.0.0"
 source = { editable = "." }
 dependencies = [
     { name = "lxml" },
