@@ -72,8 +72,10 @@ async def test_line_detector_crossed():
     assert len(events) == 1
     event = events[0]
     assert event.name == "Line Detector Crossed"
-    assert event.platform == "sensor"
-    assert event.value == "0"
+    assert event.platform == "event"
+    assert event.device_class == "motion"
+    assert event.entity_category is None
+    assert event.value is None
     assert event.uid == (
         f"{util.TEST_UID}_tns1:RuleEngine/LineDetector/"
         "Crossed_video_source_config1_analytics_video_source_MyLineDetectorRule"
