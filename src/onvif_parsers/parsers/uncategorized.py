@@ -233,10 +233,9 @@ async def async_parse_tamper_detector(
             f"{uid}_{topic}_{video_source}_{video_analytics}_{rule}",
             "Tamper Detection",
             "binary_sensor",
-            "problem",
+            "tamper",
             None,
             payload.Data.SimpleItem[0].Value == "true",
-            "diagnostic",
         )
     ]
 
@@ -547,11 +546,8 @@ async def async_parse_linedetector_crossed(
         model.EventEntity(
             f"{uid}_{topic}_{video_source}_{video_analytics}_{rule}",
             "Line Detector Crossed",
-            "sensor",
-            None,
-            None,
-            payload.Data.SimpleItem[0].Value,
-            "diagnostic",
+            "event",
+            "motion",
         )
     ]
 
@@ -581,7 +577,6 @@ async def async_parse_count_aggregation_counter(
             None,
             None,
             payload.Data.SimpleItem[0].Value,
-            "diagnostic",
         )
     ]
 
