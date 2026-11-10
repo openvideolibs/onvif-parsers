@@ -1,5 +1,11 @@
 # Changelog
 
+## v3.1.0 (2026-11-10)
+
+### Features
+
+- Add foscam parser for tns1:device/trigger/motiondetector human detection ([`c2473bd`](https://github.com/openvideolibs/onvif-parsers/commit/c2473bdeda94fba9f0d8c0d5100298cb172518ab))
+
 ## v3.0.0 (2026-11-07)
 
 ### Bug fixes
