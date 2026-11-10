@@ -3,6 +3,7 @@ import typing
 from . import errors, model, registry
 from .parsers import (
     ajax,  # noqa: F401
+    foscam,  # noqa: F401
     hikvision,  # noqa: F401
     reolink,  # noqa: F401
     tapo,  # noqa: F401
