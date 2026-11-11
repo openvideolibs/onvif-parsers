@@ -1,5 +1,11 @@
 # Changelog
 
+## v3.2.0 (2026-11-11)
+
+### Features
+
+- Add foscam car and sound detection alarms ([`c34ea9a`](https://github.com/openvideolibs/onvif-parsers/commit/c34ea9aa4fab37663da1ff65f5f1ba402c3a1315))
+
 ## v3.1.0 (2026-11-10)
 
 ### Features
