@@ -59,3 +59,111 @@ async def test_foscam_motion_human(state: str, expected: bool) -> None:
     assert event.uid == (
         f"{util.TEST_UID}_tns1:Device/Trigger/MotionDetector_HUMAN_DETECTION_ALARM"
     )
+
+
+@pytest.mark.parametrize(("state", "expected"), [("true", True), ("false", False)])
+async def test_foscam_motion_sound(state: str, expected: bool) -> None:
+    """Tests tns1:Device/Trigger/MotionDetector - Sound detection."""
+    events = await util.get_events(
+        {
+            "SubscriptionReference": None,
+            "Topic": {
+                "_value_1": "tns1:Device/Trigger/MotionDetector",
+                "Dialect": "http://www.onvif.org/ver10/tev/topicExpression/ConcreteSet",
+                "_attr_1": {},
+            },
+            "ProducerReference": None,
+            "Message": {
+                "_value_1": {
+                    "Source": {
+                        "SimpleItem": [
+                            {"Name": "VideoSource", "Value": "SOUND_DETECTION_ALARM"}
+                        ],
+                        "ElementItem": [],
+                        "Extension": None,
+                        "_attr_1": None,
+                    },
+                    "Key": None,
+                    "Data": {
+                        "SimpleItem": [{"Name": "State", "Value": state}],
+                        "ElementItem": [],
+                        "Extension": None,
+                        "_attr_1": None,
+                    },
+                    "Extension": None,
+                    "UtcTime": dt.datetime(
+                        2026, 11, 10, 17, 31, 10, tzinfo=dt.timezone.utc
+                    ),
+                    "PropertyOperation": "Changed",
+                    "_attr_1": {},
+                }
+            },
+        }
+    )
+
+    assert events is not None
+    assert isinstance(events, list)
+    assert len(events) == 1
+    event = events[0]
+
+    assert event.name == "Detected Sound"
+    assert event.platform == "binary_sensor"
+    assert event.device_class == "sound"
+    assert event.value is expected
+    assert event.uid == (
+        f"{util.TEST_UID}_tns1:Device/Trigger/MotionDetector_SOUND_DETECTION_ALARM"
+    )
+
+
+@pytest.mark.parametrize(("state", "expected"), [("true", True), ("false", False)])
+async def test_foscam_motion_car(state: str, expected: bool) -> None:
+    """Tests tns1:Device/Trigger/MotionDetector - Car detection."""
+    events = await util.get_events(
+        {
+            "SubscriptionReference": None,
+            "Topic": {
+                "_value_1": "tns1:Device/Trigger/MotionDetector",
+                "Dialect": "http://www.onvif.org/ver10/tev/topicExpression/ConcreteSet",
+                "_attr_1": {},
+            },
+            "ProducerReference": None,
+            "Message": {
+                "_value_1": {
+                    "Source": {
+                        "SimpleItem": [
+                            {"Name": "VideoSource", "Value": "CAR_DETECTION_ALARM"}
+                        ],
+                        "ElementItem": [],
+                        "Extension": None,
+                        "_attr_1": None,
+                    },
+                    "Key": None,
+                    "Data": {
+                        "SimpleItem": [{"Name": "State", "Value": state}],
+                        "ElementItem": [],
+                        "Extension": None,
+                        "_attr_1": None,
+                    },
+                    "Extension": None,
+                    "UtcTime": dt.datetime(
+                        2026, 11, 10, 20, 48, 12, tzinfo=dt.timezone.utc
+                    ),
+                    "PropertyOperation": "Changed",
+                    "_attr_1": {},
+                }
+            },
+        }
+    )
+
+    assert events is not None
+    assert isinstance(events, list)
+    assert len(events) == 1
+    event = events[0]
+
+    assert event.name == "Vehicle Detection"
+    assert event.platform == "binary_sensor"
+    assert event.device_class == "motion"
+    assert event.value is expected
+    assert event.uid == (
+        f"{util.TEST_UID}_tns1:Device/Trigger/MotionDetector_CAR_DETECTION_ALARM"
+    )

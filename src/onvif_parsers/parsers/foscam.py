@@ -12,6 +12,18 @@ _FOSCAM_ALARM_TEMPLATES: dict[str, model.EventEntity] = {
         platform="binary_sensor",
         device_class="motion",
     ),
+    "CAR_DETECTION_ALARM": model.EventEntity(
+        uid="",
+        name="Vehicle Detection",
+        platform="binary_sensor",
+        device_class="motion",
+    ),
+    "SOUND_DETECTION_ALARM": model.EventEntity(
+        uid="",
+        name="Detected Sound",
+        platform="binary_sensor",
+        device_class="sound",
+    ),
 }
 
 
