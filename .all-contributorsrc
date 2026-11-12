@@ -45,6 +45,15 @@
       ],
       "profile": "https://github.com/cfelicio",
       "avatar_url": "https://avatars.githubusercontent.com/u/7227683?v=4"
+    },
+    {
+      "login": "atinsley",
+      "name": "atinsley",
+      "avatar_url": "https://avatars.githubusercontent.com/u/6677642?v=4",
+      "profile": "https://github.com/atinsley",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,
