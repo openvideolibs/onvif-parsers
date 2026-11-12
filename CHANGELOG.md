@@ -1,5 +1,11 @@
 # Changelog
 
+## v3.3.0 (2026-11-12)
+
+### Features
+
+- Add parser for tns1:device/hardwarefailure ([`fecb01d`](https://github.com/openvideolibs/onvif-parsers/commit/fecb01d3fb41a3dc6928371b993e63d8565b07d4))
+
 ## v3.2.0 (2026-11-11)
 
 ### Features
